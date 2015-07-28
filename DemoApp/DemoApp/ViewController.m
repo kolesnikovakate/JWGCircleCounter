@@ -31,7 +31,7 @@
 
 - (IBAction)startButtonAction:(id)sender {
     if (![self.circleCounter didStart] || [self.circleCounter didFinish]) {
-        [self.circleCounter startWithSeconds:3];
+        [self.circleCounter startWithSeconds:15];
         [self.startButton setTitle:@"Pause" forState:UIControlStateNormal];
         self.resetButton.enabled = YES;
     }
@@ -60,6 +60,11 @@
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
     [alertView show];
+}
+
+- (void)circleCounterTimeFired:(JWGCircleCounter *)circleCounter timeLeft:(NSUInteger)timeLeft
+{
+    NSLog(@"timeLeft %li", (long)(timeLeft));
 }
 
 @end

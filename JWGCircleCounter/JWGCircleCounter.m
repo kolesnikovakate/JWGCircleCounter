@@ -8,7 +8,7 @@
 #import "JWGCircleCounter.h"
 
 #define JWG_SECONDS_ADJUSTMENT 1000
-#define JWG_TIMER_INTERVAL .015 // ~60 FPS
+#define JWG_TIMER_INTERVAL 1
 
 @interface JWGCircleCounter()
 
@@ -96,6 +96,9 @@
     }
 
     _timerLabel.text = [NSString stringWithFormat:@"%li", (long)ceil(_totalTime - _elapsedTime)];
+    if ([self.delegate respondsToSelector:@selector(circleCounterTimeFired:timeLeft:)]) {
+        [self.delegate circleCounterTimeFired:self timeLeft:ceil(_totalTime - _elapsedTime)];
+    }
     
     [self setNeedsDisplay];
 }

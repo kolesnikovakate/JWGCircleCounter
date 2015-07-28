@@ -95,5 +95,6 @@
  */
 @optional
 - (void)circleCounterTimeDidExpire:(JWGCircleCounter *)circleCounter;
+- (void)circleCounterTimeFired:(JWGCircleCounter *)circleCounter timeLeft:(NSUInteger)timeLeft;
 
 @end
